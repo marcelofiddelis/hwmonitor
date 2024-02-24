@@ -1,15 +1,12 @@
-package io.github.marcelofiddelis;
+package io.github.marcelofiddelis.hwmonitor;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
-public class HwmonitorTest 
-{
+public class HwmonitorTest {
 
     @Test
-    public void shouldAnswerWithTrue()
-    {
+    public void shouldAnswerWithTrue() {
         Assertions.assertTrue(true);
     }
 }
