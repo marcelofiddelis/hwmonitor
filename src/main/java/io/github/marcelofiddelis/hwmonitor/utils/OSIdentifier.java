@@ -4,6 +4,11 @@ package io.github.marcelofiddelis.hwmonitor.utils;
  * @author Marcelo Fidelis
  */
 public class OSIdentifier {
+
+    /**
+     * 
+     * @return The Operational System name
+     */
     public static String getOs(){
         return System.getProperty("os.name");
     }
