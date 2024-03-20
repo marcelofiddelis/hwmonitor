@@ -1,8 +1,9 @@
 package io.github.marcelofiddelis.hwmonitor;
 
-import io.github.marcelofiddelis.hwmonitor.utils.Getter;
+import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
 import io.github.marcelofiddelis.hwmonitor.utils.OSIdentifier;
-import io.github.marcelofiddelis.hwmonitor.utils.PlataformHandler;
+import io.github.marcelofiddelis.hwmonitor.utils.plataforms.Getter;
+import io.github.marcelofiddelis.hwmonitor.utils.plataforms.PlataformHandler;
 
 /**
  * Entrypoint for the application, identifing the host Operational System and
@@ -40,5 +41,11 @@ public class Hwmonitor {
             e.printStackTrace();
         }
     }
+
+    public Cpu getCpu(){
+        return this.system.getCpu();
+    }
+
+
 
 }

@@ -1,7 +1,4 @@
-package io.github.marcelofiddelis.hwmonitor.utils;
-
-import io.github.marcelofiddelis.hwmonitor.utils.plataforms.LinuxGetter;
-import io.github.marcelofiddelis.hwmonitor.utils.plataforms.WindowsGetter;
+package io.github.marcelofiddelis.hwmonitor.utils.plataforms;
 
 public class PlataformHandler {
 

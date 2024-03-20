@@ -1,18 +1,18 @@
 package io.github.marcelofiddelis.hwmonitor.utils.plataforms;
 
 import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
+import io.github.marcelofiddelis.hwmonitor.cpu.CpuLinux;
 import io.github.marcelofiddelis.hwmonitor.gpu.Gpu;
 import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
 import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
 import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
 
-
-public class LinuxGetter extends DefaultGetter{
+public class LinuxGetter extends DefaultGetter {
 
     @Override
     public Cpu getCpu() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCpu'");
+        
+        return CpuLinux.instance();
     }
 
     @Override
@@ -44,5 +44,5 @@ public class LinuxGetter extends DefaultGetter{
         // TODO Auto-generated method stub
         return super.toString();
     }
-    
+
 }

@@ -5,7 +5,6 @@ import io.github.marcelofiddelis.hwmonitor.gpu.Gpu;
 import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
 import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
 import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
-import io.github.marcelofiddelis.hwmonitor.utils.Getter;
 
 public abstract class DefaultGetter implements Getter{
 
