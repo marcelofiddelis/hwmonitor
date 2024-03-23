@@ -2,6 +2,7 @@ package io.github.marcelofiddelis.hwmonitor.cpu;
 
 import org.junit.jupiter.api.Test;
 
+
 public class CpuWindowsTest {
     
      @Test
@@ -21,5 +22,6 @@ public class CpuWindowsTest {
     public void getCpuTemperature_ShouldReturnCpuTemperature(){
         Cpu cpu = CpuWindows.instance();
         System.out.println(cpu.temperature());
+
     }
 }
