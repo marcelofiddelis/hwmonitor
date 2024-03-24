@@ -9,11 +9,7 @@ public interface Storage {
      */
     public List<StorageUnit> disks();
 
-    /**
-     * 
-     * @return A list of disk usage 
-     */
-    public List<String> disksUsage();
+  
 
 
 
