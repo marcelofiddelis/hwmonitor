@@ -119,7 +119,7 @@ public class FileHandlerLinux {
         return handleRam(2);
     }
 
-    private BufferedReader storageHandler(String command) {
+    private BufferedReader commandHandler(String command) {
 
         Process process;
         try {
@@ -133,13 +133,13 @@ public class FileHandlerLinux {
     }
 
     public List<StorageUnit> getStorageUnits() {
-        BufferedReader lines = storageHandler("lsblk -n -o MODEL,SERIAL,ROTA,TYPE,SIZE,FSUSED,FSUSE%,STATE,TRAN");
+        BufferedReader lines = commandHandler("lsblk -n -o MODEL,SERIAL,ROTA,TYPE,SIZE,FSUSED,FSUSE%,STATE,TRAN");
         String line;
         float usage = 0;
         String product = "";
         String vendor = "";
         String health = "";
-        String storageInterface="";
+        String storageInterface = "";
         String storageSerial = "";
         float capacity = 0;
         int disk = 0;
@@ -152,7 +152,7 @@ public class FileHandlerLinux {
                 if (parts.length >= 8) {
                     if (disk > 0) {
                         StorageUnit storageUnit = new StorageUnitLinux(product, vendor, String.valueOf(capacity),
-                                String.valueOf(usage), health,type,storageInterface,storageSerial);
+                                String.valueOf(usage), health, type, storageInterface, storageSerial);
                         storageUnits.add(storageUnit);
                         usage = 0;
                         capacity = 0;
@@ -164,7 +164,6 @@ public class FileHandlerLinux {
                     storageInterface = parts[7];
                     storageSerial = parts[2];
                     type = Integer.valueOf(parts[3]);
-                    
 
                 } else {
                     if (parts[3].endsWith("M")) {
@@ -182,16 +181,43 @@ public class FileHandlerLinux {
 
                         capacity += Float.valueOf(parts[2].substring(0, parts[2].length() - 1).replaceAll(",", "."));
                     }
-                    
 
                 }
 
             }
-            StorageUnit storageUnit = new StorageUnitLinux(product, vendor, String.valueOf(capacity), String.valueOf(usage),health,type,storageInterface,storageSerial);
+            StorageUnit storageUnit = new StorageUnitLinux(product, vendor, String.valueOf(capacity),
+                    String.valueOf(usage), health, type, storageInterface, storageSerial);
             storageUnits.add(storageUnit);
             return storageUnits;
 
         } catch (IOException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public String getMoboSocket() {
+        BufferedReader lines = commandHandler("cat /sys/class/dmi/id/board_name");
+
+        try {
+
+            return lines.readLine();
+
+        } catch (IOException e) {
+
+            throw new RuntimeException();
+        }
+
+    }
+
+    public String getMoboManufacture() {
+        BufferedReader lines = commandHandler("cat /sys/class/dmi/id/board_vendor");
+
+        try {
+
+            return lines.readLine();
+
+        } catch (IOException e) {
+
             throw new RuntimeException();
         }
     }
