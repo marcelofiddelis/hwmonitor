@@ -2,6 +2,7 @@ package io.github.marcelofiddelis.hwmonitor.utils.filehandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -78,9 +79,36 @@ public class FileHandlerLinux {
         } catch (IOException e) {
             throw new RuntimeException();
             
-        } 
-                                                                             // Celsius
+        }
         
-        
+    }
+
+    private String handleRam(int i){
+        try {
+            Process process = Runtime.getRuntime().exec("free -h");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("Mem:")) {
+                    String[] parts = line.split("\\s+");
+                    String ramInfo = parts[i];
+                    
+                    ramInfo = ramInfo.replace("Gi", " Gb");
+                    return ramInfo;
+                }
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getTotalRAM() {
+        return handleRam(1);
+    }
+
+    public String getRAMInUse() {
+        return handleRam(2);
     }
 }
