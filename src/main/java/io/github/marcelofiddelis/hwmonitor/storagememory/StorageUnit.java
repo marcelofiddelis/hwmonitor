@@ -35,11 +35,29 @@ public interface StorageUnit {
      * 
      * @return the storage temperature
      */
-    public String temp();
 
+    
+    // public String temp();
+
+    /**
+     * 
+     * @return if is a HDD or SSD
+     */
+    public String type();
+    
+    /**
+     * @return if is a SATA,IDE,M.2 or other type of interface
+     */
+    public String storageInterface();
+
+    /**
+     * 
+     * @return the storage Serial
+     */
+    public String storageSerial();
     /**
      * 
      * @return a summary of all info on the storage
      */
-    public String toSring();
+    public String toString();
 }
