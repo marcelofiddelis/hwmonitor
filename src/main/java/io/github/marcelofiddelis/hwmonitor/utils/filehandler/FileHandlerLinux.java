@@ -1,6 +1,7 @@
 package io.github.marcelofiddelis.hwmonitor.utils.filehandler;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -221,4 +222,68 @@ public class FileHandlerLinux {
             throw new RuntimeException();
         }
     }
+
+    private String networkHandler(String paramQuery, boolean internal) {
+
+        File netDir = new File("/sys/class/net/");
+        File[] interfaces = netDir.listFiles();
+        String info = "Not found";
+        String interfaceName = null;
+
+        if (!internal) {
+            for (File interfaceFile : interfaces) {
+                String name = interfaceFile.getName();
+                if (!name.equals("lo")) {
+                    if (!name.startsWith("docker")) {
+                        interfaceName = name;
+                        break;
+
+                    }
+                }
+            }
+
+        }else{
+            interfaceName = "lo";
+        }
+
+        if (interfaceName != null) {
+
+            BufferedReader reader = commandHandler("ip -h addr show " + interfaceName);
+            String line;
+
+            try {
+                while ((line = reader.readLine()) != null) {
+                    if (line.contains(paramQuery)) {
+                        String[] parts = line.trim().split("\\s+");
+                        info = parts[1];
+                        break;
+                    }
+
+                }
+
+            } catch (IOException e) {
+
+                throw new RuntimeException();
+            }
+
+        }
+        return info;
+
+    }
+
+    public String getIpv4Adress() {
+        return networkHandler("inet",false);
+
+    }
+
+    public String getInternalIp() {
+
+        return networkHandler("inet",true);
+    }
+
+    public String getMac() {
+        return networkHandler("link/ether",false);
+
+    }
+
 }
