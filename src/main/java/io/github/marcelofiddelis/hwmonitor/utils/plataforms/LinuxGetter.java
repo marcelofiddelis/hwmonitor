@@ -4,8 +4,13 @@ import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
 import io.github.marcelofiddelis.hwmonitor.cpu.CpuLinux;
 import io.github.marcelofiddelis.hwmonitor.gpu.Gpu;
 import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
+import io.github.marcelofiddelis.hwmonitor.mobo.MoboLinux;
+import io.github.marcelofiddelis.hwmonitor.network.Network;
+import io.github.marcelofiddelis.hwmonitor.network.NetworkLinux;
 import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
+import io.github.marcelofiddelis.hwmonitor.principalmemory.RamLinux;
 import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
+import io.github.marcelofiddelis.hwmonitor.storagememory.StorageLinux;
 
 public class LinuxGetter extends DefaultGetter {
 
@@ -23,26 +28,28 @@ public class LinuxGetter extends DefaultGetter {
 
     @Override
     public Mobo getMobo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMobo'");
+        
+        return MoboLinux.instance();
     }
 
     @Override
     public Ram getRam() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRam'");
+        
+        return RamLinux.instance();
     }
 
     @Override
     public Storage getStorage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getStorage'");
+        
+        return StorageLinux.instance();
     }
 
     @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+    public Network getNetwork() {
+        return NetworkLinux.instance();
+        
     }
+
+   
 
 }

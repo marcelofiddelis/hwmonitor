@@ -3,6 +3,7 @@ package io.github.marcelofiddelis.hwmonitor.utils.plataforms;
 import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
 import io.github.marcelofiddelis.hwmonitor.gpu.Gpu;
 import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
+import io.github.marcelofiddelis.hwmonitor.network.Network;
 import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
 import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
 
@@ -18,6 +19,8 @@ public interface Getter {
     public Ram getRam();
 
     public Storage getStorage();
+
+    public Network getNetwork();
     
     
 } 

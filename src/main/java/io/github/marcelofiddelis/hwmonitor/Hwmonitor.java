@@ -1,6 +1,10 @@
 package io.github.marcelofiddelis.hwmonitor;
 
 import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
+import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
+import io.github.marcelofiddelis.hwmonitor.network.Network;
+import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
+import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
 import io.github.marcelofiddelis.hwmonitor.utils.OSIdentifier;
 import io.github.marcelofiddelis.hwmonitor.utils.plataforms.Getter;
 import io.github.marcelofiddelis.hwmonitor.utils.plataforms.PlataformHandler;
@@ -44,6 +48,26 @@ public class Hwmonitor {
 
     public Cpu getCpu(){
         return this.system.getCpu();
+    }
+
+    public Mobo getMobo(){
+        return this.system.getMobo();
+    }
+
+    public Ram getRam(){
+        return this.system.getRam();
+    }
+
+    public Storage getStorage(){
+        return this.system.getStorage();
+    }
+
+    public Network getNetwork(){
+        return this.system.getNetwork();
+    }
+
+    public String getOs(){
+        return this.os;
     }
 
 
