@@ -3,6 +3,7 @@ package io.github.marcelofiddelis.hwmonitor.utils.plataforms;
 import io.github.marcelofiddelis.hwmonitor.cpu.Cpu;
 import io.github.marcelofiddelis.hwmonitor.gpu.Gpu;
 import io.github.marcelofiddelis.hwmonitor.mobo.Mobo;
+import io.github.marcelofiddelis.hwmonitor.network.Network;
 import io.github.marcelofiddelis.hwmonitor.principalmemory.Ram;
 import io.github.marcelofiddelis.hwmonitor.storagememory.Storage;
 
@@ -43,6 +44,12 @@ public class WindowsGetter extends DefaultGetter {
     public String toString() {
         // TODO Auto-generated method stub
         return super.toString();
+    }
+
+    @Override
+    public Network getNetwork() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNetwork'");
     }
     
 }
